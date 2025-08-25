@@ -14,9 +14,36 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
 export const metadata: Metadata = {
   title: "Asistika — AI Personal Assistant",
   description: "Proactive AI assistant for life, work, study, and travel.",
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    title: "Asistika — AI Personal Assistant",
+    description: "Proactive AI assistant for life, work, study, and travel.",
+    siteName: "Asistika",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Asistika preview",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Asistika — AI Personal Assistant",
+    description: "Proactive AI assistant for life, work, study, and travel.",
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({
